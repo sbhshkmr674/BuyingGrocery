@@ -1,0 +1,17 @@
+<center>
+     <%= link_to "New Grocessori", new_grocessories_path%>
+    <hr /> 
+    <table bgcolor="lightpink">
+              <tr>
+                  <td>Fruits Name <%= button_tag  "Done !"%></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <td>Vegetable Name <%= button_tag "Done !"%></td>
+              </tr>   
+          <% @grocessories.each do |v| %>
+            <tr>
+                <td><%= check_box "v","fruit", {:checked => v.fruit, :disabled => false}%> <%= v.fruit %></td>
+                <td><%= check_box "v","vegetable", {:checked => v.vegetable, :disabled => false}%><%= v.vegetable%></td>            
+            </tr>
+          <% end %>
+    </table>      
+         
+</center>         
