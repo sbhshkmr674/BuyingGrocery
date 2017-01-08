@@ -24,6 +24,18 @@ class GrocessoriesController < ApplicationController
   		@grocessori=Grocessori.find(params[:id])
   	end
 
+    def update  
+      @grocessori = Grocessori.find(params[:id])
+      @grocessori.update(grocessori_params)
+      redirect_to(grocessori_path(@grocessori))
+    end  
+
+    def destroy  
+      @grocessori = Grocessori.find(params[:id])
+      @grocessori.destroy
+      redirect_to grocessories_path
+    end
+     
   	def show
   		@grocessori=Grocessori.find(params[:id])
   	end
