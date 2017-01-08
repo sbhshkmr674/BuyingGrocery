@@ -1,17 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#pic").click(function()
+  {
+    $("#items p").wrap("<strike>");
+    $('#pic').fadeOut("slow");
+  });
+  $("#pic1").click(function()
+  {
+    $("#item p").wrap("<strike>");
+  });
+});
+</script>
+
+</head>
+<body>
+
 <center>
      <%= link_to "New Grocessori", new_grocessories_path%>
     <hr /> 
-    <table bgcolor="lightpink">
-              <tr>
-                  <td>Fruits Name <%= button_tag  "Done !"%></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   <td>Vegetable Name <%= button_tag "Done !"%></td>
-              </tr>   
+    <table bgcolor="lightblue">
+        <tr>
+            <th><div class="items">
+              <p> List of Fruits :</p> 
+              </div>
+              <div class="box" id="pic">
+            <input type="button" value="Done !" />
+            </div>
+            </th>
+            <th><div class="item">
+              <p> List of Vegetable :</p> 
+              </div>
+              <div class="box" id="pic1">
+            <input type="button" value="Done !" />
+            </div>
+            </th>
+        </tr>
           <% @grocessories.each do |v| %>
             <tr>
-                <td><%= check_box "v","fruit", {:checked => v.fruit, :disabled => false}%> <%= v.fruit %></td>
-                <td><%= check_box "v","vegetable", {:checked => v.vegetable, :disabled => false}%><%= v.vegetable%></td>            
-            </tr>
-          <% end %>
-    </table>      
-         
+                <td><div class="checkbox">
+                   <input type="checkbox" name="packersOff" value="1"/>
+                   <label class="strikethrough"><%= v.fruit%></label>
+               </div></td> 
+               <td><div class="checkbox">
+                   <input type="checkbox" name="packersOff" value="1"/>
+                   <label class="strikethrough"><%= v.vegetable%></label>
+               </div></td>  
+            </tr>                   
+          <% end %>      
+     </table>     
 </center>         
+<style type="text/css">
+   input[type="checkbox"]:checked + label.strikethrough{
+    text-decoration: line-through;
+   }
+   input[type="button"]:checked + label.strikethrough{
+    text-decoration: line-through;
+   }
+</style>
+</body>
+</html>
